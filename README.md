@@ -1,0 +1,2 @@
+# ProyectoWeb2
+La empresa SoftBiokernel tiene la necesidad de construir para sus clientes del sector salud una aplicación web que permite controlar los pacientes que llegan al Triage por emergencia donde se le permita al doctor de turno registrar la información del paciente como datos principales, causa de la consulta, diagnóstico del doctor, se le preguntará un formulario al usuario con preguntas básicas para identificar si tiene COVID-19  o no. 
