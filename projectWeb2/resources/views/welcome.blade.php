@@ -7,7 +7,7 @@
 
     <title>Laravel</title>
 
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     </link>
 
 </head>
@@ -30,15 +30,17 @@
         </nav>
 
         <div class="card">
-            <div class="row">
-                <div class="form-group col-sm-10  m-auto">
-                    <div class="row text-center">
-                        <label for="ccConsulta" class="col-sm-6 m-auto">Consultar si el paciente está registrado:</label>
-                        <input type="text" class="form-control col-sm-6" id="ccConsulta" placeholder="Identificación" required>
+            <form name="consulta" method="get" onsubmit="submitForm(this)">
+                <div class="row">
+                    <div class="form-group col-sm-10  m-auto">
+                        <div class="row text-center">
+                            <label for="ccConsulta" class="col-sm-6 m-auto">Consultar si el paciente está registrado:</label>
+                            <input type="text" class="form-control col-sm-6" id="ccConsulta" placeholder="Identificación" required>
+                        </div>
                     </div>
+                    <button type="submit" class="btn btn-primary m-auto">Consultar</button>
                 </div>
-                <button type="submit" id="consult" class="btn btn-primary m-auto">Consultar</button>
-            </div>
+            </form>
         </div>
 
         <div class="col-md-6 text-center m-auto" style="margin-top: 5rem !important;">
@@ -89,39 +91,10 @@
     </div>
     <script src="{{asset('js/app.js')}}"></script>
     <script>
-
-    let button = document.getElementById('consult');
-
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        let xhttp = new XMLHttpRequest();
-        let documento = document.getElementById('ccConsulta').value;
-
-    
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            // Typical action to be performed when the document is ready:
-            console.log(JSON.parse(xhttp.response));
-
-            cliente = JSON.parse(xhttp.response);
-
-            document.getElementById('cc').value = cliente.identificacion ; 
-            document.getElementById('allName').value = cliente.nombre ; 
-            document.getElementById('eps').value = cliente.eps_asociada ; 
-            document.getElementById('phone').value = cliente.telefono ; 
-            document.getElementById('Direccion').value = cliente.direccion ; 
-            document.getElementById('parnerName').value = cliente.nombre_ayudante ; 
-            document.getElementById('parnerPhone').value = cliente.telefono_ayudante ; 
-            document.getElementById('antece').value = cliente.antecedentes_texto || "" ; 
-
-            }
-        };
-
-        xhttp.open("GET", "/client/" + documento, true);
-        xhttp.send();
-    });
-    
+        function submitForm() {
+            let id = document.getElementById("ccConsulta").value
+            document.consulta.action = "client" + "/" + id
+        }
     </script>
 </body>
 

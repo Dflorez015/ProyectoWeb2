@@ -126,11 +126,16 @@ class Hospital extends Controller
         return redirect('/');
     }
 
-    public function consultarCliente(Request $request, $documento)
+    public function consultarCliente($documento)
     {
         $client = DB::table('cliente')->where('identificacion', $documento)->first();
 
-        return json_encode($client);
+        return view('consulta', ['paciente' => $client]);
+    }
+
+    public function consultarCovid($id, Request $req)
+    {
+        return $req;
     }
 
     public function csrfun()

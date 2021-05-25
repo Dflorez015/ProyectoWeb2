@@ -7,7 +7,7 @@
 
     <title>Laravel</title>
 
-    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </link>
     <style>
         .form-check {
@@ -39,6 +39,13 @@
             </div>
         </nav>
 
+        @if (isset($paciente) && !empty($paciente))
+        <div class="card text-center col-md-4 m-auto">
+            <div class="row">
+                <p class="col-12">Nombre: {{$paciente -> nombre}}</p>
+                <p class="col-12"> id: {{$paciente -> identificacion}}</p>
+            </div>
+        </div>
         <div class="col-md-6 m-auto" style="margin-top: 5rem !important;">
             <div class="card">
                 <div class="card-header text-center">
@@ -46,7 +53,7 @@
                 </div>
                 <div class="card-body text-left">
                     <h4>Seleccionar los sintomas que presenta el paciente</h4>
-                    <form action="consulta" method="POST" style="font-size: 1.2rem;">
+                    <form action="consult/{{$paciente->identificacion}}" method="POST" style="font-size: 1.2rem;">
                         @csrf
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="tos">
@@ -79,6 +86,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
     <script src="{{asset('js/app.js')}}"></script>
 </body>
