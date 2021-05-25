@@ -27,10 +27,13 @@
 <body class="h-100" style="background-color: #f8fafc;">
     <div class="container pt-4 d-flex h-100">
 
-        <div class="card text-center col-md-4 m-auto shadow border-0" style="height: 106px;">
+        <div class="card text-center col-md-4 m-auto shadow border-0" style="height: 190px;">
             <div class="row">
                 <p class="col-12 mt-3">{{$resultado}}</p>
                 <p class="col-12 mt-3">Nombre: {{$cliente->nombre}}</p>
+                <a href="/">
+                    <button class="btn btn-primary mt-3 mb-3 mx-auto" style="max-width: 140px;">Ir al inicio</button>
+                </a>
             </div>
         </div>
 
