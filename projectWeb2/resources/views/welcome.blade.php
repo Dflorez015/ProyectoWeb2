@@ -29,22 +29,22 @@
             </div>
         </nav>
 
-        <div class="card">
+        <div class="card col-md-6 mx-auto py-3 shadow-sm border-0 mt-4">
             <form name="consulta" method="get" onsubmit="submitForm(this)">
                 <div class="row">
                     <div class="form-group col-sm-10  m-auto">
-                        <div class="row text-center">
-                            <label for="ccConsulta" class="col-sm-6 m-auto">Consultar si el paciente está registrado:</label>
-                            <input type="text" class="form-control col-sm-6" id="ccConsulta" placeholder="Identificación" required>
+                        <div class="row text-center flex-column">
+                            <label for="ccConsulta" class="text-center mb-3">Consultar si el paciente está registrado:</label>
+                            <input type="text" class="form-control w-100" id="ccConsulta" placeholder="Identificación" required>
+                            <button type="submit" class="btn btn-primary mx-auto mt-3">Consultar</button>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary m-auto">Consultar</button>
                 </div>
             </form>
         </div>
 
-        <div class="col-md-6 text-center m-auto" style="margin-top: 5rem !important;">
-            <div class="card">
+        <div class="col-md-6 text-center m-auto" style="margin-top: 5rem !important; padding-bottom: 56px;">
+            <div class="card shadow-sm border-0">
                 <div class="card-header">
                     Agregar Paciente
                 </div>

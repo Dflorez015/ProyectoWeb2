@@ -40,43 +40,43 @@
         </nav>
 
         @if (isset($paciente) && !empty($paciente))
-        <div class="card text-center col-md-4 m-auto">
+        <div class="card text-center col-md-4 mx-auto mt-4 shadow-sm border-0">
             <div class="row">
-                <p class="col-12">Nombre: {{$paciente -> nombre}}</p>
+                <p class="col-12 mt-3">Nombre: {{$paciente -> nombre}}</p>
                 <p class="col-12"> id: {{$paciente -> identificacion}}</p>
             </div>
         </div>
         <div class="col-md-6 m-auto" style="margin-top: 5rem !important;">
-            <div class="card">
-                <div class="card-header text-center">
-                    Consulta de Covid-19
+            <div class="card shadow-sm border-0">
+                <div class="card-header text-center px-3 px-sm-5">
+                    <h5 class="mb-0">Consulta de Covid-19</h5>
                 </div>
-                <div class="card-body text-left">
-                    <h4>Seleccionar los sintomas que presenta el paciente</h4>
-                    <form action="consult/{{$paciente->identificacion}}" method="POST" style="font-size: 1.2rem;">
+                <div class="card-body text-left px-3 px-sm-5">
+                    <h4 class="text-center mb-3">Seleccionar los sintomas que presenta el paciente</h4>
+                    <form action="consult/{{$paciente->identificacion}}" method="POST" style="font-size: 1rem;">
                         @csrf
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="tos">
+                            <input type="checkbox" name="1" class="form-check-input" id="tos">
                             <label class="form-check-label" for="tos">Tos</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="respirar">
+                            <input type="checkbox" name="2" class="form-check-input" id="respirar">
                             <label class="form-check-label" for="respirar">Dificultad al respirar</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="fiebre">
+                            <input type="checkbox" name="3" class="form-check-input" id="fiebre">
                             <label class="form-check-label" for="fiebre">Fiebre</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="escalofrio">
+                            <input type="checkbox" name="4" class="form-check-input" id="escalofrio">
                             <label class="form-check-label" for="escalofrio">Escalofríos</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="temblor">
+                            <input type="checkbox" name="5" class="form-check-input" id="temblor">
                             <label class="form-check-label" for="temblor">Temblores</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="dolor">
+                            <input type="checkbox" name="6" class="form-check-input" id="dolor">
                             <label class="form-check-label" for="dolor">Dolor muscular</label>
                         </div>
                         <div class="text-center mt-3">

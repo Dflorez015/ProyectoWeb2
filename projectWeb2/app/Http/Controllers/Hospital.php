@@ -102,40 +102,67 @@ class Hospital extends Controller
         $parnerPhone = $request->input('parnerPhone');
         $antece = $request->input('antece');
 
-        $dataInsert = [
-            'nombre' => $nombre,
-            'identificacion' => $identificacion,
-            'eps_asociada' => $eps,
-            'telefono' => $phone,
-            'direccion' => $direccion,
-            'nombre_ayudante' => $parnerName,
-            'telefono_ayudante' => $parnerPhone,
-        ];
+        $client = DB::table('cliente')->where('identificacion', $identificacion)->first();
 
-        if (!empty($antece)) {
-            $dataInsert['antecedentes'] = 1;
-            $dataInsert['antecedentes_texto'] = $antece;
-        } else {
-            $dataInsert['antecedentes'] = 0;
+        if (empty($client)){
+            $dataInsert = [
+                'nombre' => $nombre,
+                'identificacion' => $identificacion,
+                'eps_asociada' => $eps,
+                'telefono' => $phone,
+                'direccion' => $direccion,
+                'nombre_ayudante' => $parnerName,
+                'telefono_ayudante' => $parnerPhone,
+            ];
+    
+            if (!empty($antece)) {
+                $dataInsert['antecedentes'] = 1;
+                $dataInsert['antecedentes_texto'] = $antece;
+            } else {
+                $dataInsert['antecedentes'] = 0;
+            }
+    
+            DB::table('cliente')->insert([
+                $dataInsert
+            ]);
         }
 
-        DB::table('cliente')->insert([
-            $dataInsert
-        ]);
-
-        return redirect('/');
+        return redirect("client/$identificacion");
     }
 
     public function consultarCliente($documento)
     {
         $client = DB::table('cliente')->where('identificacion', $documento)->first();
 
-        return view('consulta', ['paciente' => $client]);
+        if (!empty($client)){
+            return view('consulta', ['paciente' => $client]);
+        }else{
+            return redirect("/");
+        }
     }
 
     public function consultarCovid($id, Request $req)
     {
-        return $req;
+
+        $dolencias = [];
+
+        for ($i=1; $i < 7; $i++) { 
+            if (!empty($req->input($i)) && $req->input($i) == 'on'){
+                array_push($dolencias, $req->input($i));
+            }
+        }
+
+        $diagnostico = (count($dolencias) > 0) ? "Usted es posible para COVID-19" : "Usted esta sano";
+
+        DB::table('cliente')->where('identificacion', $id)->update(
+            [
+                'diagnostico_doctor' => $diagnostico
+            ]
+        );
+
+        $client = DB::table('cliente')->where('identificacion', $id)->first();
+
+        return view('resultadoCovid', ['resultado' => $diagnostico, 'cliente' => $client]);
     }
 
     public function csrfun()
@@ -143,3 +170,4 @@ class Hospital extends Controller
         return csrf_token();
     }
 }
+?>
