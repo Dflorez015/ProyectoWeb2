@@ -9,3 +9,12 @@ Route::get('/', function () {
 Route::get('/docs', function () {
     return view('doctors');
 });
+
+Route::get('/cons', function () {
+    return view('consulta');
+});
+
+Route::get('hospital', function () {
+    return view('hospital');
+});
+

@@ -59,6 +59,10 @@
                             <label for="allName">Nombre completo</label>
                             <input type="text" class="form-control" id="allName" placeholder="Nombre completo" required>
                         </div>
+                        <div class="form-group ">
+                            <label for="eps">EPS</label>
+                            <input type="text" class="form-control" id="eps" placeholder="EPS" required>
+                        </div>
                         <div class="form-group">
                             <label for="phone">Teléfono</label>
                             <input type="text" class="form-control" id="phone" placeholder="Teléfono" required>
@@ -74,6 +78,10 @@
                         <div class="form-group">
                             <label for="parnerPhone">Contacto del acompañante</label>
                             <input type="text" class="form-control" id="parnerPhone" placeholder="Contacto del acompañante" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="antece">Antecedemtes médicos</label>
+                            <textarea class="form-control" placeholder="Si no tiene dejar vacío" id="antece" style="height: 5rem"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Ingresar</button>
                     </form>
