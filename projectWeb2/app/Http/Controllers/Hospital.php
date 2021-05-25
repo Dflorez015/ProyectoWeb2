@@ -55,15 +55,40 @@ class Hospital extends Controller
     public function doctors()
     {
         $doctors = DB::table('medico')->get();
-        
+
         return view('doctors', ['doctors' => $doctors]);
     }
 
     public function doctorsDelete($id)
     {
         DB::table('medico')->delete($id);
-        
+
         return redirect('docs');
+    }
+
+    public function imprimirDoc($id)
+    {
+        $doctor = DB::table('medico')->where('id', $id)->get();
+        return view('edit', ['doctor' => $doctor[0]]);
+    }
+
+    public function editarDoc($id, Request $req)
+    {
+        $doctor = DB::table('medico')->where('id', $id)->update(
+            [
+                "nombre" => $req->allName,
+                "direccion" => $req->direccion,
+                "telefono" => $req->phone,
+                "tipo_sangre" => $req->blood,
+                "experiencia_a" => $req->exp,
+                "fecha_nacimiento" => $req->date
+            ]
+        );
+        if ($doctor) {
+            return redirect('docs');
+        } else {
+            return ["result" => "Falla a la hora de actualizar la información del doctor"];
+        }
     }
 
     public function crearCliente(Request $request)
@@ -90,7 +115,7 @@ class Hospital extends Controller
         if (!empty($antece)) {
             $dataInsert['antecedentes'] = 1;
             $dataInsert['antecedentes_texto'] = $antece;
-        }else{
+        } else {
             $dataInsert['antecedentes'] = 0;
         }
 
@@ -107,7 +132,7 @@ class Hospital extends Controller
 
         return json_encode($client);
     }
-    
+
     public function csrfun()
     {
         return csrf_token();

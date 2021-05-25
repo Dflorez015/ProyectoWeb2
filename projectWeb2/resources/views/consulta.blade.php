@@ -7,7 +7,7 @@
 
     <title>Laravel</title>
 
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     </link>
     <style>
         .form-check {
@@ -80,7 +80,7 @@
             </div>
         </div>
     </div>
-    <script src="js/app.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 
 </html>

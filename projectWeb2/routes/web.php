@@ -17,6 +17,10 @@ Route::post('/client', [Hospital::class, 'crearCliente']);
 
 Route::get('client/{documento}', [Hospital::class, 'consultarCliente']);
 
+Route::get('/docedit/{id}',[Hospital::class, 'imprimirDoc']);
+
+Route::put('/docedit/{id}',[Hospital::class, 'editarDoc']);
+
 Route::get('/consulta', function () {
     return view('consulta');
 });

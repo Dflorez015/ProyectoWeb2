@@ -7,7 +7,7 @@
 
     <title>Laravel</title>
 
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css"  href="{{asset('css/app.css')}}">
     </link>
 
 </head>
@@ -61,10 +61,6 @@
                             <label for="eps">EPS</label>
                             <input type="text" class="form-control" name="eps" id="eps" placeholder="EPS" required>
                         </div>
-                        <div class="form-group ">
-                            <label for="eps">EPS</label>
-                            <input type="text" class="form-control" id="eps" placeholder="EPS" required>
-                        </div>
                         <div class="form-group">
                             <label for="phone">Teléfono</label>
                             <input type="text" class="form-control" name="phone" id="phone" placeholder="Teléfono" required>
@@ -85,17 +81,13 @@
                             <label for="antece">Antecedentes médicos</label>
                             <textarea class="form-control" name="antece" placeholder="Si no tiene dejar vacío" id="antece" style="height: 5rem"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="antece">Antecedemtes médicos</label>
-                            <textarea class="form-control" placeholder="Si no tiene dejar vacío" id="antece" style="height: 5rem"></textarea>
-                        </div>
                         <button type="submit" class="btn btn-primary">Ingresar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="js/app.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script>
 
     let button = document.getElementById('consult');
